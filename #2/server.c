@@ -70,7 +70,7 @@ else{ // 정상적으로 소켓 디스크립터가 들어올 경우
             char fromClient[100]; // Client로 부터받은 메시지 저장 문자열 배열
             char * toClient = malloc(sizeof(char)*100);// Client로 보낼 메시지 배열
             char temp[] ="Hello, Client, this is my reply for your message No.";
-            strcpy(toClient,temp);
+            strcpy(toClient,temp); 
             strcat(toClient,(char*)fd_array[i][1]);
             read(c_socket_fd, fromClient ,sizeof(fromClient));
             printf("From Client Message: %s\n",fromClient);

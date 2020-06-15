@@ -47,18 +47,18 @@ if(pid == 0){ // P-C1이 실행하는 부분
     server_address.sin_family=AF_INET;//IPv4 채택
     server_address.sin_addr.s_addr=inet_addr("127.0.0.1"); //IP 주소입력(localhost)
     server_address.sin_port=htons(PORT);//포트번호 입력
-
+    
     //입력된 정보에 해당하는 서버에 접속 시도 실패시 프로세스 종료
     if(connect(clientSocket, (struct sockaddr*)&server_address, sizeof(server_address))==-1)
     {
         printf("sorry, connection failed! exit this process:%d\n",PID_NUM);
         return 0;
-    }
+    } 
     else{ //연결에 성공했을 경우
         for(int i = 0 ; i<5 ; i++){ // 메시지에 대해 5번 수행
             char * toServer = malloc(sizeof(char)*100);
             char temp[] = "Hello, Server this is message No." ;//서버에 보낼 문자열
-            char fromServer[100];
+            char fromServer[100]; // 
             strcpy(toServer,temp); //임시변수에 들은 문자열 복사
             strcat(toServer,(char*)i);//서버에 보낼 문자열에 sequence adding
             strcat(toServer,"from"); //from adding
